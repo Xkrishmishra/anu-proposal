@@ -4,692 +4,333 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Anu 🌸</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+
 <style>
-:root{
-  --rose:#e8627a; --blush:#f5c6d0; --gold:#c9a96e;
-  --deep:#130810; --mid:#1e0d18; --cream:#fdf5f0;
-  --burg:#7b2d3e; --green:#64c878;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
 body{
-  font-family:'Cormorant Garamond',serif;
-  background:var(--deep);color:var(--cream);
-  min-height:100vh;overflow-x:hidden;
-  cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Ctext y='22' font-size='20'%3E🌸%3C/text%3E%3C/svg%3E") 14 14,auto;
+  margin:0;
+  font-family:serif;
+  background:#130810;
+  color:#fff;
+  text-align:center;
 }
 
-/* ── PARTICLES ── */
-#particles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-.petal{position:absolute;animation:fall linear infinite;user-select:none}
-@keyframes fall{
-  0%{transform:translateY(-30px) rotate(0deg);opacity:0}
-  10%{opacity:.7} 85%{opacity:.5}
-  100%{transform:translateY(105vh) rotate(380deg);opacity:0}
+/* screens */
+.scr{display:none;padding:20px}
+.scr.on{display:block}
+
+/* button */
+button{
+  padding:10px 20px;
+  margin-top:20px;
+  cursor:pointer;
 }
 
-/* ── PROGRESS ── */
-#bar{position:fixed;top:0;left:0;height:3px;width:0;
-  background:linear-gradient(90deg,var(--rose),var(--gold));
-  transition:width .7s ease;z-index:200;
-  box-shadow:0 0 12px var(--rose)}
-
-/* ── DOTS ── */
-#dots{position:fixed;bottom:1.2rem;left:50%;transform:translateX(-50%);
-  display:flex;gap:.45rem;z-index:200}
-.dot{width:7px;height:7px;border-radius:50%;
-  background:rgba(201,169,110,.18);border:1px solid rgba(201,169,110,.4);
-  cursor:pointer;transition:all .3s}
-.dot.on{background:var(--gold);box-shadow:0 0 8px var(--gold);transform:scale(1.5)}
-
-/* ── SCREENS ── */
-.scr{
-  display:none;position:relative;z-index:1;
-  min-height:100vh;flex-direction:column;
-  align-items:center;justify-content:center;
-  text-align:center;padding:2rem 1.4rem 4rem;
-  animation:fadeUp .7s ease both
-}
-.scr.on{display:flex}
-@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-
-/* ── TYPOGRAPHY ── */
-.lbl{font-size:.7rem;letter-spacing:.45em;text-transform:uppercase;
-     color:var(--gold);opacity:.65;margin-bottom:.35rem}
-.ttl{font-family:'Playfair Display',serif;font-style:italic;
-     font-size:clamp(1.9rem,5.5vw,3.2rem);color:var(--blush);margin-bottom:1rem}
-.sub{color:rgba(245,198,208,.6);font-style:italic;font-size:1.05rem;
-     line-height:1.85;max-width:420px}
-
-/* ── CARD ── */
-.card{background:rgba(255,255,255,.04);border:1px solid rgba(201,169,110,.2);
-      border-radius:6px;padding:2.2rem 2.4rem;max-width:560px;
-      width:100%;backdrop-filter:blur(12px)}
-
-/* ── BUTTON ── */
-.btn{background:transparent;border:1.5px solid var(--gold);color:var(--gold);
-     font-family:'Cormorant Garamond',serif;font-size:1.05rem;
-     letter-spacing:.22em;text-transform:uppercase;
-     padding:.85rem 2.4rem;cursor:pointer;
-     transition:all .3s;position:relative;overflow:hidden}
-.btn::after{content:'';position:absolute;top:0;left:-110%;width:100%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(201,169,110,.18),transparent);
-  transition:left .45s}
-.btn:hover::after{left:110%}
-.btn:hover{background:rgba(201,169,110,.1);box-shadow:0 0 22px rgba(201,169,110,.35);transform:translateY(-2px)}
-
-/* ═══════════════════════════════
-   S1  INTRO
-═══════════════════════════════ */
-#s1{background:radial-gradient(ellipse at 50% 45%,#2e0d1c,var(--deep) 72%)}
-.nameplate{
-  font-family:'Playfair Display',serif;font-style:italic;
-  font-size:clamp(4.5rem,16vw,10.5rem);
-  color:var(--blush);line-height:1;letter-spacing:.04em;
-  animation:glow 3.5s ease-in-out infinite alternate;
-  text-shadow:0 0 60px rgba(232,98,122,.4)
-}
-@keyframes glow{
-  from{text-shadow:0 0 40px rgba(232,98,122,.35),0 0 90px rgba(232,98,122,.12)}
-  to  {text-shadow:0 0 90px rgba(232,98,122,.75),0 0 180px rgba(232,98,122,.28)}
-}
-.tagline{font-size:1.15rem;color:var(--gold);letter-spacing:.35em;
-         text-transform:uppercase;margin:1.1rem 0 2.6rem;font-weight:300}
-
-/* ═══════════════════════════════
-   S2  QUIZ
-═══════════════════════════════ */
-#s2{background:radial-gradient(ellipse at 25% 65%,#20091a,var(--deep) 65%)}
-.qtext{font-size:1.35rem;font-style:italic;color:var(--blush);
-       margin-bottom:1.3rem;line-height:1.55}
-.opts{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.4rem}
-.opt{background:rgba(255,255,255,.05);border:1px solid rgba(201,169,110,.25);
-     color:var(--cream);font-family:'Cormorant Garamond',serif;font-size:1rem;
-     padding:.8rem 1rem;cursor:pointer;transition:all .25s;border-radius:3px}
-.opt:hover{background:rgba(232,98,122,.15);border-color:var(--rose);transform:scale(1.03)}
-.opt.good{background:rgba(100,200,120,.2);border-color:var(--green);color:#b0f0c0}
-.opt.bad{background:rgba(232,98,122,.2);border-color:var(--rose);animation:shk .4s}
-@keyframes shk{0%,100%{transform:translateX(0)}30%{transform:translateX(-8px)}70%{transform:translateX(8px)}}
-
-/* ═══════════════════════════════
-   S3  CATCH HEARTS
-═══════════════════════════════ */
-#s3{background:radial-gradient(ellipse at 75% 25%,#210e1a,var(--deep) 62%)}
-canvas{display:block;max-width:100%;border-radius:6px;
-       border:1px solid rgba(201,169,110,.25);
-       box-shadow:0 0 40px rgba(232,98,122,.08)}
-.hud{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;
-     font-size:1rem;color:var(--gold);letter-spacing:.18em;margin-bottom:.75rem}
-
-/* ═══════════════════════════════
-   S4  WORD SCRAMBLE
-═══════════════════════════════ */
-#s4{background:radial-gradient(ellipse at 20% 80%,#1d0b14,var(--deep) 62%)}
-.word-display{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(2.2rem,7vw,4.8rem);
-  color:var(--gold);letter-spacing:.4em;
-  margin:1rem 0;animation:pulse 2.2s ease-in-out infinite
-}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
-.ans-input{
-  background:transparent;border:none;
-  border-bottom:2px solid rgba(201,169,110,.5);
-  color:var(--cream);font-family:'Cormorant Garamond',serif;
-  font-size:1.7rem;text-align:center;width:260px;
-  outline:none;letter-spacing:.2em;padding:.3rem
-}
-.ans-input::placeholder{color:rgba(201,169,110,.3)}
-.mini-btn{background:none;border:1px solid rgba(201,169,110,.3);
-  color:rgba(201,169,110,.6);font-family:'Cormorant Garamond',serif;
-  font-size:.88rem;padding:.3rem .95rem;cursor:pointer;
-  letter-spacing:.1em;margin:.5rem .25rem 0;transition:all .2s}
-.mini-btn:hover{border-color:var(--gold);color:var(--gold)}
-.fb{font-size:1.1rem;min-height:1.7rem;color:var(--blush);font-style:italic;margin-top:.5rem}
-
-/* ═══════════════════════════════
-   S5  PETAL MEMORY
-═══════════════════════════════ */
-#s5{background:radial-gradient(ellipse at 55% 58%,#1e0b14,var(--deep) 66%)}
-.mem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;
-          max-width:480px;width:100%;margin:1.2rem auto}
-.mem-card{
-  aspect-ratio:1;border-radius:4px;cursor:pointer;
-  background:rgba(232,98,122,.1);
-  border:1px solid rgba(232,98,122,.3);
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.6rem;transition:transform .15s;
-  position:relative;user-select:none
-}
-.mem-card:hover{transform:scale(1.06)}
-.mem-card.flip .front{transform:rotateY(180deg)}
-.mem-card.flip .back{transform:rotateY(0deg)}
-.mem-card .front,.mem-card .back{
-  position:absolute;inset:0;border-radius:4px;
-  display:flex;align-items:center;justify-content:center;
-  backface-visibility:hidden;transition:transform .4s
-}
-.mem-card .front{background:rgba(201,169,110,.12);border:1px solid rgba(201,169,110,.3);font-size:1.4rem;color:rgba(201,169,110,.5)}
-.mem-card .back{background:rgba(232,98,122,.12);border:1px solid rgba(232,98,122,.4);font-size:1.6rem;transform:rotateY(180deg)}
-.mem-card.matched .back{background:rgba(100,200,120,.15);border-color:var(--green)}
-.mem-card.matched{cursor:default}
-.mem-info{font-size:.9rem;color:rgba(201,169,110,.55);letter-spacing:.18em;margin-bottom:.4rem}
-
-/* ═══════════════════════════════
-   S6  PETAL REVEAL
-═══════════════════════════════ */
-#s6{background:radial-gradient(ellipse at 50% 62%,#1f0c17,var(--deep) 66%)}
-.petals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;
-             max-width:450px;width:100%;margin:1.2rem 0}
+/* petals */
 .p-card{
-  background:rgba(232,98,122,.08);border:1px solid rgba(232,98,122,.25);
-  border-radius:50%;aspect-ratio:1;display:flex;align-items:center;
-  justify-content:center;cursor:pointer;font-size:1.8rem;transition:all .4s
+  display:inline-block;
+  width:80px;height:80px;
+  border-radius:50%;
+  margin:10px;
+  background:#e8627a22;
+  line-height:80px;
+  cursor:pointer;
 }
-.p-card:hover{background:rgba(232,98,122,.18);transform:scale(1.07)}
-.p-card.open{border-radius:6px;aspect-ratio:auto;padding:.7rem .5rem;
-  font-size:.85rem;color:var(--blush);font-style:italic;cursor:default;
-  line-height:1.45;background:rgba(232,98,122,.1);border-color:var(--rose)}
-.p-card.open:hover{transform:none}
-
-/* ═══════════════════════════════
-   S7  OUR TIMELINE
-═══════════════════════════════ */
-#s7{background:radial-gradient(ellipse at 38% 28%,#220d1a,var(--deep) 65%)}
-.tl{max-width:450px;width:100%;margin:1.2rem 0;text-align:left;position:relative}
-.tl::before{content:'';position:absolute;left:20px;top:0;bottom:0;
-  width:1px;background:linear-gradient(to bottom,var(--rose),var(--gold),transparent)}
-.ti{display:flex;gap:1.1rem;margin-bottom:1.4rem;
-    opacity:0;transform:translateX(-18px);transition:all .55s}
-.ti.show{opacity:1;transform:translateX(0)}
-.ti-dot{width:40px;height:40px;min-width:40px;border-radius:50%;
-  background:rgba(232,98,122,.1);border:1px solid var(--rose);
-  display:flex;align-items:center;justify-content:center;font-size:1.1rem}
-.ti-h{font-family:'Playfair Display',serif;color:var(--gold);font-size:.93rem;margin-bottom:.18rem}
-.ti-p{color:rgba(245,198,208,.65);font-size:.88rem;font-style:italic;line-height:1.5}
-
-/* ═══════════════════════════════
-   S8  LOVE LETTER
-═══════════════════════════════ */
-#s8{background:radial-gradient(ellipse at 50% 52%,#1f0b16,var(--deep) 70%)}
-.letter{max-width:530px;width:100%;
-  background:rgba(253,232,237,.04);border:1px solid rgba(201,169,110,.2);
-  padding:2.5rem;position:relative}
-.letter::before,.letter::after{content:'❧';position:absolute;
-  color:var(--gold);font-size:1.3rem;opacity:.45}
-.letter::before{top:.8rem;left:.8rem}
-.letter::after{bottom:.8rem;right:.8rem;transform:rotate(180deg)}
-.ltext{font-size:1.05rem;line-height:2;color:var(--blush);font-style:italic;text-align:left}
-.ltext .hi{color:var(--gold);font-style:normal}
-
-/* ═══════════════════════════════
-   S9  PROMISES
-═══════════════════════════════ */
-#s9{background:radial-gradient(ellipse at 62% 42%,#230918,var(--deep) 65%)}
-.promise-list{max-width:450px;width:100%}
-.pr-item{display:flex;align-items:flex-start;gap:1rem;padding:.85rem 0;
-  border-bottom:1px solid rgba(201,169,110,.1);cursor:pointer;transition:all .3s}
-.pr-item:last-child{border-bottom:none}
-.pr-item:hover{padding-left:.4rem}
-.pr-chk{width:26px;height:26px;min-width:26px;border-radius:50%;
-  border:1px solid rgba(201,169,110,.4);display:flex;align-items:center;
-  justify-content:center;font-size:.8rem;transition:all .3s}
-.pr-item.done .pr-chk{background:rgba(100,200,120,.2);border-color:var(--green)}
-.pr-txt{color:var(--blush);font-size:1rem;font-style:italic;line-height:1.55;padding-top:.1rem}
-.pr-item.done .pr-txt{color:var(--gold)}
-
-/* ═══════════════════════════════
-   S10  BALLOON POP
-═══════════════════════════════ */
-#s10{background:radial-gradient(ellipse at 50% 50%,#23091a,var(--deep) 62%)}
-
-/* ═══════════════════════════════
-   S11  PROPOSAL
-═══════════════════════════════ */
-#s11{background:radial-gradient(ellipse at 50% 42%,#3d0d22,var(--deep) 72%)}
-.bigq{font-family:'Playfair Display',serif;font-style:italic;
-  font-size:clamp(2.3rem,7.5vw,5.8rem);color:var(--blush);line-height:1.15;
-  margin-bottom:.9rem;animation:pulse 2s ease-in-out infinite}
-.ring{font-size:4.8rem;display:block;margin:1.2rem auto;animation:float 4s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-14px) rotate(14deg)}}
-.yes-no{display:flex;gap:1.4rem;margin-top:1.5rem;flex-wrap:wrap;justify-content:center}
-.yes-btn{background:linear-gradient(135deg,var(--rose),var(--burg));border:none;
-  color:#fff;font-family:'Cormorant Garamond',serif;font-size:1.4rem;
-  letter-spacing:.22em;padding:1rem 2.8rem;cursor:pointer;border-radius:3px;
-  animation:hb 1.6s ease-in-out infinite;transition:transform .25s}
-.yes-btn:hover{transform:scale(1.09)}
-@keyframes hb{0%,100%{box-shadow:0 0 28px rgba(232,98,122,.4)}50%{box-shadow:0 0 60px rgba(232,98,122,.75)}}
-.no-btn{background:transparent;border:1.5px solid rgba(201,169,110,.28);
-  color:rgba(201,169,110,.38);font-family:'Cormorant Garamond',serif;
-  font-size:1.4rem;letter-spacing:.22em;padding:1rem 2.8rem;cursor:pointer;border-radius:3px}
-
-/* ═══════════════════════════════
-   S12  ENDING
-═══════════════════════════════ */
-#s12{background:radial-gradient(ellipse at 50% 50%,#400b20,var(--deep) 62%)}
-#cw{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-.cp{position:absolute;animation:cp linear infinite;top:-40px}
-@keyframes cp{0%{transform:translateY(0) rotate(0) scale(1);opacity:1}100%{transform:translateY(110vh) rotate(720deg) scale(.3);opacity:0}}
-.end-ttl{font-family:'Playfair Display',serif;font-style:italic;
-  font-size:clamp(2.8rem,9vw,7rem);color:var(--blush);
-  text-shadow:0 0 80px rgba(232,98,122,.55);animation:glow 2.2s ease-in-out infinite alternate}
-.fw{position:fixed;pointer-events:none;z-index:60}
-.sp{position:absolute;width:5px;height:5px;border-radius:50%;animation:sp linear forwards}
-@keyframes sp{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(.15)}}
-
-/* TRAIL */
-.trail{position:fixed;pointer-events:none;font-size:1.1rem;z-index:999;animation:tr 1s forwards}
-@keyframes tr{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-48px) scale(.2)}}
-
-@media(max-width:500px){
-  .opts{grid-template-columns:1fr}
-  .card,.letter{padding:1.4rem}
-  .mem-grid{grid-template-columns:repeat(4,1fr);gap:.5rem}
-  .mem-card{font-size:1.2rem}
-  canvas{width:320px!important;height:240px!important}
+.p-card.open{
+  border-radius:10px;
+  width:auto;height:auto;
+  padding:10px;
 }
+
+/* memory */
+.mem-card{
+  width:60px;height:60px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:#222;
+  margin:5px;
+  cursor:pointer;
+}
+.mem-card.flip{background:#e8627a}
+.mem-card.matched{background:green}
+
+/* promise */
+.pr-item{cursor:pointer;margin:10px}
+.pr-item.done{color:gold}
+
+/* no button */
+#nb{position:relative}
 </style>
 </head>
+
 <body>
 
-<div id="particles"></div>
-<div id="bar"></div>
-<div id="dots"></div>
-
-<!-- ═══ S1 · INTRO ═══ -->
+<!-- S1 -->
 <div class="scr on" id="s1">
-  <div class="lbl">a special journey for</div>
-  <div class="nameplate">Anu</div>
-  <div class="tagline">🌸 something beautiful awaits 🌸</div>
-  <p class="sub" style="margin-bottom:2.2rem">
-    This little adventure was made with my whole heart, just for you.<br>
-    Follow the path and see what's waiting at the end...
-  </p>
-  <button class="btn" onclick="go(2)">Begin the Journey →</button>
-  <p style="margin-top:1.2rem;font-size:.75rem;color:rgba(201,169,110,.28);letter-spacing:.15em">
-    10 chapters · made with 💕
-  </p>
+<h1>Anu 🌸</h1>
+<p>Something special for you...</p>
+<button onclick="go(2)">Start</button>
 </div>
 
-<!-- ═══ S2 · QUIZ ═══ -->
+<!-- S2 Quiz -->
 <div class="scr" id="s2">
-  <div class="lbl">Chapter One</div>
-  <div class="ttl">A Little Quiz About Us</div>
-  <div id="qnum" style="font-size:.85rem;color:var(--gold);letter-spacing:.2em;margin-bottom:.6rem">Question 1 of 6</div>
-  <div class="card" id="qcard">
-    <div class="qtext" id="qt"></div>
-    <div class="opts" id="opts"></div>
-  </div>
+<h2>Quiz 💕</h2>
+<div id="qt"></div>
+<div id="opts"></div>
 </div>
 
-<!-- ═══ S3 · CATCH HEARTS ═══ -->
+<!-- S3 Hearts -->
 <div class="scr" id="s3">
-  <div class="lbl">Chapter Two</div>
-  <div class="ttl">Catch All My Hearts 💕</div>
-  <p class="sub" style="margin-bottom:.8rem">Click the falling hearts before they escape!</p>
-  <div class="hud">
-    <span>❤️ Score: <b id="hs">0</b></span>
-    <span>⏳ <b id="ht">25</b>s</span>
-    <span>🎯 Goal: <b>10</b></span>
-  </div>
-  <canvas id="hc" width="480" height="300"></canvas>
-  <p style="color:rgba(201,169,110,.38);font-size:.85rem;margin-top:.6rem;font-style:italic">tap/click the hearts ✨</p>
+<h2>Click Hearts ❤️</h2>
+<p>Score: <span id="hs">0</span></p>
+<button onclick="endHearts()">Finish</button>
 </div>
 
-<!-- ═══ S4 · WORD SCRAMBLE ═══ -->
+<!-- S4 Scramble -->
 <div class="scr" id="s4">
-  <div class="lbl">Chapter Three</div>
-  <div class="ttl">Unscramble the Word 🔤</div>
-  <p class="sub" style="margin-bottom:.9rem">Each word describes what you are to me 💕</p>
-  <div class="card" style="max-width:440px">
-    <div class="word-display" id="sw"></div>
-    <p style="color:rgba(201,169,110,.45);font-size:.85rem;font-style:italic;min-height:1.1rem;margin-bottom:.8rem" id="shint"></p>
-    <input class="ans-input" id="si" placeholder="type here..." autocomplete="off" autocorrect="off" spellcheck="false"/>
-    <div class="fb" id="sfb"></div>
-    <div style="margin-top:.6rem">
-      <button class="mini-btn" onclick="showHint()">💡 Hint</button>
-      <button class="mini-btn" onclick="skipWord()">Skip →</button>
-    </div>
-    <div style="margin-top:.8rem;font-size:.8rem;color:rgba(201,169,110,.38)" id="sp2"></div>
-  </div>
+<h2>Word Game</h2>
+<div id="sw"></div>
+<input id="si">
+<p id="sfb"></p>
 </div>
 
-<!-- ═══ S5 · MEMORY MATCH ═══ -->
+<!-- S5 Memory -->
 <div class="scr" id="s5">
-  <div class="lbl">Chapter Four</div>
-  <div class="ttl">Memory Match 🧠💕</div>
-  <p class="sub" style="margin-bottom:.5rem">Match all the love pairs to continue!</p>
-  <div class="mem-info" id="minfo">Pairs found: 0 / 8</div>
-  <div class="mem-grid" id="mgrid"></div>
+<h2>Memory Game</h2>
+<div id="mgrid"></div>
 </div>
 
-<!-- ═══ S6 · PETAL REVEAL ═══ -->
+<!-- S6 Petals -->
 <div class="scr" id="s6">
-  <div class="lbl">Chapter Five</div>
-  <div class="ttl">Tap Each Petal 🌸</div>
-  <p class="sub" style="margin-bottom:.3rem">9 reasons I love you are hidden inside...</p>
-  <div style="font-size:.82rem;color:rgba(201,169,110,.5);letter-spacing:.18em;margin-bottom:.5rem" id="pc">0 / 9 revealed</div>
-  <div class="petals-grid" id="pg"></div>
-  <button class="btn" id="pnext" style="display:none;margin-top:1rem" onclick="go(7)">Continue → 🌸</button>
+<h2>Why I Love You 🌸</h2>
+<div id="pg"></div>
+<p id="pc"></p>
+<button id="pnext" onclick="go(7)" style="display:none">Next</button>
 </div>
 
-<!-- ═══ S7 · TIMELINE ═══ -->
+<!-- S7 Timeline -->
 <div class="scr" id="s7">
-  <div class="lbl">Chapter Six</div>
-  <div class="ttl">Our Story So Far ✨</div>
-  <div class="tl" id="tl">
-    <div class="ti" data-d="0"><div class="ti-dot">🌟</div><div><div class="ti-h">The Beginning</div><div class="ti-p">The day I first saw you — I knew something special was about to happen.</div></div></div>
-    <div class="ti" data-d="160"><div class="ti-dot">💬</div><div><div class="ti-h">Our First Conversation</div><div class="ti-p">You made me laugh and I thought — I want more of this, forever.</div></div></div>
-    <div class="ti" data-d="320"><div class="ti-dot">🌸</div><div><div class="ti-h">I Fell For You</div><div class="ti-p">Somewhere between all the little moments, I was completely yours.</div></div></div>
-    <div class="ti" data-d="480"><div class="ti-dot">💕</div><div><div class="ti-h">Every Day With You</div><div class="ti-p">You make ordinary days feel like the most beautiful adventure.</div></div></div>
-    <div class="ti" data-d="640"><div class="ti-dot">💍</div><div><div class="ti-h">Today — Right Now</div><div class="ti-p">The moment I ask you to be part of my forever. 🌸</div></div></div>
-  </div>
-  <button class="btn" onclick="go(8)">Next Chapter →</button>
+<h2>Our Story</h2>
+<div id="tl">
+<p>🌟 We met</p>
+<p>💬 We talked</p>
+<p>💕 I fell for you</p>
+</div>
+<button onclick="go(8)">Next</button>
 </div>
 
-<!-- ═══ S8 · LOVE LETTER ═══ -->
+<!-- S8 Letter -->
 <div class="scr" id="s8">
-  <div class="lbl">Chapter Seven</div>
-  <div class="ttl">A Note from My Heart</div>
-  <div class="letter">
-    <div class="ltext" id="lt"></div>
-  </div>
-  <button class="btn" style="margin-top:1.8rem" onclick="go(9)">Continue → ✨</button>
+<h2>Letter 💌</h2>
+<p id="lt"></p>
+<button onclick="go(9)">Next</button>
 </div>
 
-<!-- ═══ S9 · PROMISES ═══ -->
+<!-- S9 Promises -->
 <div class="scr" id="s9">
-  <div class="lbl">Chapter Eight</div>
-  <div class="ttl">My Promises to You</div>
-  <p class="sub" style="margin-bottom:1.3rem">Tap each promise to seal it with love 💕</p>
-  <div class="promise-list" id="pl"></div>
-  <div id="pm" style="display:none;color:var(--gold);font-family:'Playfair Display',serif;font-size:1.15rem;font-style:italic;margin-top:.8rem;animation:fadeUp .6s ease">Every promise sealed with love 💍</div>
-  <button class="btn" id="prnext" style="display:none;margin-top:1.2rem" onclick="go(10)">Next Chapter →</button>
+<h2>Promises 💍</h2>
+<div id="pl"></div>
+<button id="prnext" onclick="go(10)" style="display:none">Next</button>
 </div>
 
-<!-- ═══ S10 · BALLOON POP ═══ -->
+<!-- S10 -->
 <div class="scr" id="s10">
-  <div class="lbl">Chapter Nine</div>
-  <div class="ttl">Pop the Love Balloons! 🎈</div>
-  <p class="sub" style="margin-bottom:.8rem">Pop all balloons to unlock the final chapter!</p>
-  <div class="hud">
-    <span>🎈 Left: <b id="bl">15</b></span>
-    <span>⏳ <b id="bt">35</b>s</span>
-  </div>
-  <canvas id="bc" width="480" height="300"></canvas>
+<h2>Final...</h2>
+<button onclick="go(11)">Continue</button>
 </div>
 
-<!-- ═══ S11 · PROPOSAL ═══ -->
+<!-- S11 Proposal -->
 <div class="scr" id="s11">
-  <div class="lbl">The Final Chapter</div>
-  <div class="bigq">Anu, will you<br>be mine forever?</div>
-  <span class="ring">💍</span>
-  <p class="sub">
-    You are the most beautiful thing that ever happened to me.<br>
-    Every moment with you feels like pure magic. 🌸
-  </p>
-  <div class="yes-no">
-    <button class="yes-btn" onclick="sayYes()">💖 Yes, Forever!</button>
-    <button class="no-btn" id="nb" onmouseenter="runAway()" ontouchstart="runAway()">No...</button>
-  </div>
-  <p style="font-size:.78rem;color:rgba(201,169,110,.25);margin-top:.9rem;font-style:italic">(the no button has a mind of its own 😉)</p>
+<h1>Will you be mine? 💍</h1>
+<button onclick="sayYes()">YES 💖</button>
+<button id="nb" onmouseover="runAway()">NO</button>
 </div>
 
-<!-- ═══ S12 · ENDING ═══ -->
+<!-- S12 -->
 <div class="scr" id="s12">
-  <div id="cw"></div>
-  <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center">
-    <div class="end-ttl">She Said Yes! 🎉</div>
-    <span style="font-size:4.2rem;display:block;margin:1rem 0;animation:float 3s ease-in-out infinite">💍</span>
-    <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.7rem;color:var(--gold);margin:.4rem 0">Anu & Me — Forever 💕</p>
-    <p class="sub" style="margin-top:.9rem">
-      You just made me the happiest person in the world. 🌸<br>
-      This is only the beginning of our beautiful forever story.
-    </p>
-    <div style="margin-top:1.3rem;font-size:2.2rem;animation:glow 2.2s ease-in-out infinite alternate">❤️ 🌸 💍 🌸 ❤️</div>
-    <button class="btn" style="margin-top:1.5rem" onclick="fireworks()">🎆 Celebrate Again!</button>
-  </div>
+<h1>She Said YES 🎉</h1>
+<button onclick="fireworks()">Celebrate</button>
 </div>
 
 <script>
-/* ══════════════════════════════════════════
-   CORE
-══════════════════════════════════════════ */
-const N = 12;
-let cur = 1, unlocked = 1;
 
-// Petals bg
-const PE = ['🌸','🌺','✨','💕','🌷','💫'];
-const pc = document.getElementById('particles');
-for(let i=0;i<26;i++){
-  const e=document.createElement('div');e.className='petal';
-  e.textContent=PE[Math.floor(Math.random()*PE.length)];
-  e.style.cssText=`left:${Math.random()*100}%;font-size:${.65+Math.random()*.9}rem;animation-duration:${6+Math.random()*14}s;animation-delay:${-Math.random()*14}s`;
-  pc.appendChild(e);
-}
-
-// Nav dots
-const dc=document.getElementById('dots');
-for(let i=1;i<=N;i++){
-  const d=document.createElement('div');d.className='dot'+(i===1?' on':'');
-  d.onclick=()=>{if(i<=unlocked)go(i)};
-  dc.appendChild(d);
-}
-function udots(n){document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i+1===n))}
-
-// Mouse trail
-document.addEventListener('click',e=>{
-  if(e.target.closest('button,.opt,.p-card,.pr-item,.mem-card'))return;
-  const t=document.createElement('div');t.className='trail';
-  t.textContent=['💕','❤️','🌸','✨'][Math.floor(Math.random()*4)];
-  t.style.cssText=`left:${e.clientX}px;top:${e.clientY}px`;
-  document.body.appendChild(t);setTimeout(()=>t.remove(),1000);
-});
-
+/* navigation */
 function go(n){
-  document.querySelector('.scr.on')?.classList.remove('on');
+  document.querySelector('.on').classList.remove('on');
   document.getElementById('s'+n).classList.add('on');
-  cur=n; if(n>unlocked)unlocked=n;
-  document.getElementById('bar').style.width=((n-1)/(N-1)*100)+'%';
-  udots(n); window.scrollTo(0,0);
-  const fn={2:initQuiz,3:initHearts,4:initScramble,5:initMemory,6:initPetals,7:initTimeline,8:initLetter,9:initPromises,10:initBalloons,12:initEnding};
-  if(fn[n]) fn[n]();
+
+  if(n==2) initQuiz();
+  if(n==4) initScramble();
+  if(n==5) initMemory();
+  if(n==6) initPetals();
+  if(n==8) initLetter();
+  if(n==9) initPromises();
 }
 
-/* ══════════════════════════════════════════
-   S2 · QUIZ
-══════════════════════════════════════════ */
+/* QUIZ */
 const QS=[
-  {q:"What's the one thing about Anu that captivates me most?",a:["Her laugh","Her kindness","Her eyes","All of her 💕"],c:3},
-  {q:"If Anu and I were a season, which would we be?",a:["Spring — always blooming","Summer — warm & bright","Autumn — golden","All four together 🌸"],c:3},
-  {q:"What do I think about every single morning?",a:["Adventures with her","Her smile","More time together","Her — just her ❤️"],c:3},
-  {q:"How long do I want to love Anu?",a:["A decade","A lifetime","Until the stars fade","Forever & beyond ✨"],c:3},
-  {q:"What is Anu to me?",a:["My best friend","My safe place","My whole world","All of the above 🌸"],c:3},
-  {q:"If I could give Anu anything, what would it be?",a:["The world","Eternal happiness","My heart — forever","All of the above 💕"],c:3}
+ {q:"Do I love you?",a:["Yes","No"],c:0},
+ {q:"Forever?",a:["Yes 💕","No"],c:0}
 ];
-let qi=0,qscore=0;
-function initQuiz(){qi=0;qscore=0;showQ()}
+let qi=0;
+function initQuiz(){qi=0;showQ();}
 function showQ(){
-  document.getElementById('qnum').textContent=`Question ${qi+1} of ${QS.length}`;
-  document.getElementById('qt').textContent=QS[qi].q;
-  const w=document.getElementById('opts');w.innerHTML='';
+  qt.innerHTML=QS[qi].q;
+  opts.innerHTML='';
   QS[qi].a.forEach((a,i)=>{
-    const b=document.createElement('button');b.className='opt';b.textContent=a;
-    b.onclick=()=>answerQ(i,b);w.appendChild(b);
+    let b=document.createElement('button');
+    b.innerText=a;
+    b.onclick=()=>{
+      qi++;
+      if(qi<QS.length) showQ();
+      else go(3);
+    };
+    opts.appendChild(b);
   });
 }
-function answerQ(i,btn){
-  document.querySelectorAll('.opt').forEach(b=>b.onclick=null);
-  if(i===QS[qi].c){btn.classList.add('good');qscore++;}
-  else{btn.classList.add('bad');document.querySelectorAll('.opt')[QS[qi].c].classList.add('good');}
-  setTimeout(()=>{
-    qi++;
-    if(qi<QS.length){showQ();}
-    else{
-      document.getElementById('qcard').innerHTML=`
-        <div style="font-family:'Playfair Display',serif;font-size:2rem;color:var(--blush);font-style:italic;margin-bottom:.7rem">
-          ${qscore===QS.length?'💯 Perfect Score!':qscore+' / '+QS.length+' ⭐'}
-        </div>
-        <p style="color:var(--gold);font-size:1.05rem;line-height:1.8">
-          ${qscore>=4?'You know our love so well! 💕':'Every answer brings us closer 🌸'}
-        </p>
-        <button class="btn" style="margin-top:1.4rem" onclick="go(3)">Next Chapter → 💕</button>
-      `;
-    }
-  },1200);
-}
 
-/* ══════════════════════════════════════════
-   S3 · CATCH HEARTS
-══════════════════════════════════════════ */
-let hRun=false,hScore=0,hTime=25,hHearts=[],hTimer,hFrame;
-function initHearts(){
-  hRun=false;hScore=0;hTime=25;hHearts=[];
-  document.getElementById('hs').textContent=0;
-  document.getElementById('ht').textContent=25;
-  const cv=document.getElementById('hc');
-  const cx=cv.getContext('2d');
-  if(window.innerWidth<520){cv.width=320;cv.height=240;}else{cv.width=480;cv.height=300;}
-  cx.clearRect(0,0,cv.width,cv.height);
-  cx.fillStyle='rgba(232,98,122,.6)';
-  cx.font=`bold ${cv.width<400?'1rem':'1.15rem'} Cormorant Garamond,serif`;
-  cx.textAlign='center';cx.fillText('💕 Tap here to start!',cv.width/2,cv.height/2);
-  cv.onclick=cv.ontouchstart=startHearts;
-}
-function startHearts(){
-  if(hRun)return;hRun=true;hHearts=[];
-  const cv=document.getElementById('hc'),cx=cv.getContext('2d');
-  const em=['❤️','💕','💗','💖','💘','🌸','✨'];
-  let si=setInterval(()=>{
-    if(!hRun){clearInterval(si);return;}
-    hHearts.push({x:30+Math.random()*(cv.width-60),y:-20,sp:1.5+Math.random()*2.5,sz:22+Math.random()*18,e:em[Math.floor(Math.random()*em.length)],hit:false,a:1});
-  },520);
-  hTimer=setInterval(()=>{
-    if(!hRun){clearInterval(hTimer);return;}
-    hTime--;document.getElementById('ht').textContent=hTime;
-    if(hTime<=0){hRun=false;clearInterval(hTimer);clearInterval(si);cancelAnimationFrame(hFrame);endHearts();}
-  },1000);
-  function draw(){
-    if(!hRun)return;
-    cx.clearRect(0,0,cv.width,cv.height);
-    hHearts.forEach(h=>{
-      if(!h.hit)h.y+=h.sp;else{h.a-=.07;h.y-=2;}
-      cx.save();cx.globalAlpha=h.a;cx.font=h.sz+'px serif';cx.textAlign='center';
-      cx.fillText(h.e,h.x,h.y);cx.restore();
-    });
-    hHearts=hHearts.filter(h=>h.y<cv.height+40&&h.a>0);
-    hFrame=requestAnimationFrame(draw);
+/* HEART */
+let score=0;
+document.addEventListener('click',()=>{
+  if(document.getElementById('s3').classList.contains('on')){
+    score++;
+    hs.innerText=score;
   }
-  draw();
-  function click(e){
-    const r=cv.getBoundingClientRect(),sx=cv.width/r.width,sy=cv.height/r.height;
-    let cx2,cy2;
-    if(e.touches){cx2=(e.touches[0].clientX-r.left)*sx;cy2=(e.touches[0].clientY-r.top)*sy;e.preventDefault();}
-    else{cx2=(e.clientX-r.left)*sx;cy2=(e.clientY-r.top)*sy;}
-    hHearts.forEach(h=>{
-      if(h.hit)return;
-      if(Math.hypot(cx2-h.x,cy2-h.y)<h.sz*.9){h.hit=true;hScore++;document.getElementById('hs').textContent=hScore;}
-    });
-  }
-  cv.onclick=cv.ontouchstart=click;
-}
-function endHearts(){
-  const ok=hScore>=10;
-  document.getElementById('s3').innerHTML=`
-    <div class="lbl">Chapter Two — Complete!</div>
-    <div class="ttl">${ok?'🎉 Amazing!':'💕 So close!'}</div>
-    <div style="font-size:4rem;margin:1rem 0">${ok?'💖':'🌸'}</div>
-    <p class="sub">You caught <strong style="color:var(--gold)">${hScore}</strong> of my hearts.<br>
-    ${ok?'Just like you caught my whole heart! 💕':'You have all of my heart regardless! 💕'}</p>
-    <button class="btn" style="margin-top:1.5rem" onclick="go(4)">Continue → 🌸</button>
-  `;
-}
+});
+function endHearts(){go(4);}
 
-/* ══════════════════════════════════════════
-   S4 · WORD SCRAMBLE
-══════════════════════════════════════════ */
-const WORDS=[
-  {w:'FOREVER', h:'How long I want us to last...'},
-  {w:'BELOVED', h:'What you are to me 💕'},
-  {w:'CHERISH', h:'What I do with every moment with you'},
-  {w:'DESTINY', h:'Some things are simply meant to be ✨'},
-  {w:'MIRACLE', h:"That's what you are to me 🌸"},
-  {w:'SOULMATE', h:'Two hearts made for each other 💍'}
-];
+/* SCRAMBLE */
+const WORDS=["LOVE","FOREVER","ANU"];
 let wi=0;
-function initScramble(){wi=0;showWord();}
-function scramble(w){let a=w.split(''),s;do{a.sort(()=>Math.random()-.5);s=a.join('');}while(s===w);return s;}
-function showWord(){
+function initScramble(){wi=0;nextWord();}
+function nextWord(){
   if(wi>=WORDS.length){go(5);return;}
-  document.getElementById('sw').textContent=scramble(WORDS[wi].w);
-  document.getElementById('shint').textContent='';
-  document.getElementById('sfb').textContent='';
-  document.getElementById('si').value='';
-  document.getElementById('sp2').textContent=`Word ${wi+1} of ${WORDS.length}`;
-  document.getElementById('si').oninput=checkWord;
-  setTimeout(()=>document.getElementById('si').focus(),100);
+  sw.innerText=WORDS[wi].split('').sort(()=>Math.random()-.5).join('');
+  si.value='';
 }
-function checkWord(){
-  const v=document.getElementById('si').value.toUpperCase().trim();
-  if(v===WORDS[wi].w){
-    document.getElementById('sfb').textContent='✨ Correct! Beautiful word for us.';
-    document.getElementById('sfb').style.color='#a8f0b8';
-    document.getElementById('si').oninput=null;
-    setTimeout(()=>{wi++;showWord();},1200);
+si.oninput=()=>{
+  if(si.value.toUpperCase()==WORDS[wi]){
+    wi++;nextWord();
   }
-}
-function showHint(){document.getElementById('shint').textContent='💡 '+WORDS[wi].h;}
-function skipWord(){wi++;showWord();}
+};
 
-/* ══════════════════════════════════════════
-   S5 · MEMORY MATCH
-══════════════════════════════════════════ */
-const PAIRS=['💕','🌸','💍','✨','🌺','🎀','💖','🌟'];
-let mCards=[],mFlipped=[],mMatched=0,mLock=false;
+/* MEMORY */
+const P=['❤️','🌸','💍'];
 function initMemory(){
-  mCards=[];mFlipped=[];mMatched=0;mLock=false;
-  document.getElementById('minfo').textContent='Pairs found: 0 / 8';
-  const all=[...PAIRS,...PAIRS].sort(()=>Math.random()-.5);
-  const g=document.getElementById('mgrid');g.innerHTML='';
-  all.forEach((em,i)=>{
-    const c=document.createElement('div');c.className='mem-card';
-    c.innerHTML=`<div class="front">🌸</div><div class="back">${em}</div>`;
-    c.dataset.val=em;c.dataset.idx=i;
-    c.onclick=()=>flipCard(c,em);
-    g.appendChild(c);mCards.push(c);
+  mgrid.innerHTML='';
+  let arr=[...P,...P].sort(()=>Math.random()-.5);
+  let first=null;
+
+  arr.forEach(v=>{
+    let d=document.createElement('div');
+    d.className='mem-card';
+    d.innerText='?';
+    d.onclick=()=>{
+      d.innerText=v;
+      d.classList.add('flip');
+
+      if(!first) first=d;
+      else{
+        if(first.innerText==d.innerText){
+          first.classList.add('matched');
+          d.classList.add('matched');
+        }
+        first=null;
+      }
+    };
+    mgrid.appendChild(d);
   });
 }
-function flipCard(card,val){
-  if(mLock||card.classList.contains('flip')||card.classList.contains('matched'))return;
-  card.classList.add('flip');mFlipped.push(card);
-  if(mFlipped.length===2){
-    mLock=true;
-    const [a,b]=mFlipped;
-    if(a.dataset.val===b.dataset.val){
-      a.classList.add('matched');b.classList.add('matched');
-      mMatched++;document.getElementById('minfo').textContent=`Pairs found: ${mMatched} / 8`;
-      mFlipped=[];mLock=false;
-      if(mMatched===8){
-        setTimeout(()=>{
-          document.getElementById('s5').innerHTML=`
-            <div class="lbl">Chapter Four — Complete!</div>
-            <div class="ttl">🎉 All Matched!</div>
-            <div style="font-size:4rem;margin:1rem 0">💖</div>
-            <p class="sub">Your memory is as beautiful as your heart! 💕</p>
-            <button class="btn" style="margin-top:1.5rem" onclick="go(6)">Continue → 🌸</button>
-          `;
-        },700);
-      }
-    } else {
-      setTimeout(()=>{a.classList.remove('flip');b.classList.remove('flip');mFlipped=[];mLock=false;},1100);
-    }
-  }
+
+/* PETALS */
+const REASONS=[
+ "Your smile",
+ "Your care",
+ "Your love",
+ "Your eyes",
+ "Your voice",
+ "Your kindness",
+ "Your heart",
+ "Everything about you",
+ "You ❤️"
+];
+let opened=0;
+function initPetals(){
+  pg.innerHTML='';
+  opened=0;
+  pc.innerText="0/9";
+
+  REASONS.forEach(r=>{
+    let d=document.createElement('div');
+    d.className='p-card';
+    d.innerText='🌸';
+
+    d.onclick=()=>{
+      if(d.classList.contains('open')) return;
+      d.classList.add('open');
+      d.innerText=r;
+
+      opened++;
+      pc.innerText=opened+"/9";
+
+      if(opened==9) pnext.style.display='block';
+    };
+
+    pg.appendChild(d);
+  });
 }
 
-/* ══════════════════════════════════════════
-   S6 · PETAL REVEAL
-══════════════════════════════════════════ */
-const REASONS=[
-  {e:'🌸',t:"Your laugh that makes everything better"},
-  {e:'💕',t:"The way you care
+/* LETTER */
+function initLetter(){
+  lt.innerHTML="Anu ❤️<br><br>I love you so much... Forever 💕";
+}
+
+/* PROMISE */
+const PROMISES=[
+ "Always love you",
+ "Always care",
+ "Never leave you"
+];
+let done=0;
+function initPromises(){
+  pl.innerHTML='';
+  done=0;
+
+  PROMISES.forEach(p=>{
+    let d=document.createElement('div');
+    d.className='pr-item';
+    d.innerText=p;
+
+    d.onclick=()=>{
+      if(d.classList.contains('done')) return;
+      d.classList.add('done');
+      done++;
+
+      if(done==PROMISES.length){
+        prnext.style.display='block';
+      }
+    };
+
+    pl.appendChild(d);
+  });
+}
+
+/* FINAL */
+function sayYes(){go(12);}
+
+function runAway(){
+  let b=document.getElementById('nb');
+  b.style.position='absolute';
+  b.style.left=Math.random()*80+'%';
+  b.style.top=Math.random()*80+'%';
+}
+
+/* fireworks */
+function fireworks(){
+  alert("🎉 Love Forever 🎉");
+}
+
+</script>
+
+</body>
+</html>
